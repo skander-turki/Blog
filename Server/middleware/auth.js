@@ -3,12 +3,10 @@ const jwt = require('jsonwebtoken');
 
 exports.IsAuth = async (req,res) => {
     try {
-        //    import token
-        // headers=> authorization
         const token = req.headers.authorization; 
         if (!token) 
         {
-            res.status(401).send({errors : [{msg: 'you are not authorized'}]})
+            res.status(401).send({errors : [{msg: 'you are not authorized' , isAuth: false}]})
         } else 
         {
             const decoded = jwt.verify(token, process.env.SECRET_KEY);
@@ -16,19 +14,19 @@ exports.IsAuth = async (req,res) => {
             const user = await User.findOne({ _id: decoded.id });
             if(!user)
             {
-                res.status(402).send({ errors: [{ msg: 'User doesnt exist' }] });
+                res.status(402).send({ errors: [{ msg: 'User doesnt exist', isAuth: false }] });
             } 
             else 
             {
                 req.user = user; 
-                res.status(200).send({ msg: 'authorized', user: req.user });
+                res.status(200).send({ msg: 'authorized', user: req.user , isAuth: true});
                 
             }
         
         }
     }catch (error)
     {
-        res.status(403).send({ errors: [{ msg: 'you are not authorized' }] });
+        res.status(403).send({ errors: [{ msg: 'you are not authorized' , isAuth: false}] });
     }
 };
 

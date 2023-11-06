@@ -1,4 +1,4 @@
-import {ADD_TAG , GET_TAG, GET_TAGS ,DELETE_TAG} from '../actionTypes/tags'; 
+import {ADD_TAG , GET_TAG, GET_TAGS ,DELETE_TAG, GET_TAG_BY_ID} from '../actionTypes/tags'; 
 
 const initialState = {
     tag: {},
@@ -25,6 +25,11 @@ const initialState = {
             ...state,
             tag: payload,
           }
+        case GET_TAG_BY_ID:
+          return {
+            ...state,
+            tag: payload,
+          };
         default:
             return state;
     }

@@ -25,7 +25,7 @@
     width : 300px; 
     height : 100%;
     background: var(--blue);
-    border-left: 10px sold var(--blue);
+    border-left: 10px solid var(--blue);
     transition : 0.5s;
     overflow : hidden;
 }

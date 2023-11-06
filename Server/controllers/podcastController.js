@@ -61,6 +61,7 @@ exports.AddPodcasts = async (req, res) => {
                 LinkAudio : fileStr.LinkAudio,
                 Titre : fileStr.Titre,
                 Description : fileStr.Description,
+                Category : fileStr.Category ,
                 DatePost :  Date.now(), 
                 ViewNumber : 0,
                 LikesNumber : 0,

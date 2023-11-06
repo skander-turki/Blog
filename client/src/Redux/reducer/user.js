@@ -52,7 +52,7 @@ const userReducer = (state = initialState, { type, payload }) => {
     case ADD_USER:
       return { ...state , result : payload };
     case CURRENT_USER:
-      return { ...state, user: payload.user, isAuth: true };
+      return { ...state, user: payload.user, isAuth: payload.isAuth };
     case LOGOUT_USER:
       localStorage.removeItem('token');
       return { ...state, user: {}, isAuth: false };

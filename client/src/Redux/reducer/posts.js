@@ -12,7 +12,10 @@ import {
           UPLOAD_AUDIO,
           GET_ARTICLES,
           GET_VIDEOS,
-          GET_PODCASTS
+          GET_PODCASTS,
+          GET_TRENDING,
+          UPLOAD_IMAGE_VIDEO,
+          GET_POSTBYID
         } from '../actionTypes/posts';
 
 // initialstate
@@ -23,6 +26,7 @@ const initialState = {
   articles : [],
   videos : [],
   podcasts : [],
+  trending: [],
   errors: []
 };
 
@@ -42,6 +46,11 @@ const postReducer = (state = initialState, { type, payload }) => {
         return {
           ...state,
         };
+        case UPLOAD_IMAGE_VIDEO:
+          return {
+            ...state,
+            image:payload,
+          };
     case ADD_ARTICLE:
       return {
         ...state,
@@ -91,6 +100,16 @@ const postReducer = (state = initialState, { type, payload }) => {
       ...state,
       audio:payload
     };
+    case GET_TRENDING:
+      return {
+        ...state,
+        trending: payload
+      };
+    case GET_POSTBYID:
+      return {
+        ...state,
+        post: payload
+      }
     case 'VIDE_ERRORS':
       return { ...state, errors: [] };
     default:

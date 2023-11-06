@@ -38,6 +38,7 @@ exports.AddArticle = async (req,res) => {
     var newArticle = new article ({
         Titre : fileStr.Titre ,
         Description : fileStr.Description, 
+        Category : fileStr.Category ,
         ViewNumber : 0,
         LikesNumber : 0,
         DatePost : Date.now()

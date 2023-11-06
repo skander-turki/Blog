@@ -56,3 +56,12 @@ exports.AddPostToTags = async (req , res) => {
         res.status(400).send({msg : error});
     }
 }
+exports.GetTagById = async (req, res) => {
+    try {
+        const tag = await tagsSchema.findOne({ _id : req.params.id });
+        res.status(200).send({msg : 'tag', tag});
+    } catch 
+    {
+        res.status(400).send({msg : error})
+    }
+}

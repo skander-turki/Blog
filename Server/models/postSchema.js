@@ -31,6 +31,10 @@ const postSchema = new mongoose.Schema({
         type : Number,
         required: true,
     },
+    Category: {
+        type : String,
+        required: true
+    },
     tags: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Tags' }]
 }, baseOption); 
 

@@ -23,6 +23,7 @@ function AddArticle () {
         Titre : "",
         tags:[],
         Description : "",
+        Category: "", 
         links : []
     })
     const [Image, setImage] = React.useState({
@@ -127,17 +128,39 @@ function AddArticle () {
                         )}
                     /> : null}
                 </Grid>
+                <Grid item  xs={6} >
+                    <select 
+                        name='Category' 
+                        type="text" 
+                        onChange={handleChange}
+                        style={{
+                                width: "80%",
+                                height: "100%",
+                                border: "1px solid #808080",
+                                borderRadius: "10px"
+                        }}>
+                        <option value="">Select category</option>
+                        <option value="Economy">Economy</option>
+                        <option value="Technology">Technology</option>
+                        <option value="Entertainement">Entertainement</option>
+                        <option value="Sports">Sports</option>
+                        <option value="Science">Science</option>
+                        <option value="Health">Health</option>
+                        <option value="Politics">Politics</option>
+                    </select>
+                </Grid>
                 <Grid item  xs={6}>
                     <TextField name='Description' rows={5} label="Description" type="text" onChange={handleChange}  multiline sx={{width : 500 }} />
                 </Grid>  
-                <Grid item  xs={6}   >
-                    <DisplayImages Posts={post} DeleteImage={deleteImage}/>  
-                </Grid>
                 <Grid item  xs={6}>
                     <Button variant="contained" onClick={handleConfirm} endIcon={<SendIcon />}>
                         Add
                     </Button>
-                </Grid>  
+                </Grid>
+                <Grid item  xs={6}   >
+                    <DisplayImages Posts={post} DeleteImage={deleteImage}/>  
+                </Grid>
+                  
             </Grid>
             <br/>
            

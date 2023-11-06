@@ -1,8 +1,9 @@
 const express = require('express'); 
 const router = express.Router();
-const {Upload, GetAll, getOneById, GetByTags, GetAllVideos, DeleteVideo} = require ('../controllers/videoController');
+const {Upload, GetAll, getOneById, GetByTags, GetAllVideos, DeleteVideo, UploadImage} = require ('../controllers/videoController');
 
 router.post('/upload', Upload);
+router.post('/uploadImage', UploadImage);
 router.get('/getAll', GetAll);
 router.get('/getOneById/:id', getOneById);
 router.get('/getbytags',GetByTags );

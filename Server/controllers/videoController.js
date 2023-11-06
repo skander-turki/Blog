@@ -2,30 +2,38 @@ const {video} = require ('../models/videoSchema');
 const tagsSchema = require("../models/tagsSchema");
 const { cloudinary } = require('../config/cloudinary');
 
+exports.UploadImage = async (req, res) => {
+    const fileStr = req.body;
+    cloudinary.uploader.upload(
+        fileStr.url ,{ resource_type: "image", 
+        public_id: "Internship/VideoImages/"+ fileStr.name  }
+        ).then((result) => {
+            const r = {
+                id : result.asset_id,
+                link : result.secure_url
+            }
+            res.status(200).send({r})
+        }).catch((error) => {
+            res.status(401).send({error})
+        } )
+}
+
 exports.Upload = async (req, res) => {
-    
         const fileStr = req.body;
-        await cloudinary.uploader.upload(fileStr.link ,{ resource_type: "video", 
-        public_id: "Internship/Videos/"+ fileStr.Titre,
-        chunk_size: 6000000,
-        eager: [
-            { width: 300, height: 300, crop: "pad", audio_codec: "none" }, 
-            { width: 160, height: 100, crop: "crop", gravity: "south", audio_codec: "none" } ],                                   
-        eager_async: true,
-        eager_notification_url: "https://mysite.example.com/notify_endpoint" } ).then(async (result) => {
             var newVideoPost =  new video ({
-                asset_id : result.asset_id, 
-                LinkVideo : result.secure_url,
+                LinkVideo :fileStr.link,
+                LinkImage : fileStr.ImageLink, 
                 Titre : fileStr.Titre , 
                 Description : fileStr.Description, 
-                DatePost : result.created_at, 
+                Category : fileStr.Category,
+                DatePost : Date.now(), 
                 ViewNumber : 0,
                 LikesNumber : 0,
-                Duration: result.Duration,
             });
                 Promise.all(
                         fileStr.tags.map((tag) => {
                             return new Promise((resolve, reject)  => {
+                                console.log("aa")
                                 tagsSchema.findOne({name : tag}).then(async (t)  => {
                                     if( t == null) 
                                     {
@@ -50,10 +58,8 @@ exports.Upload = async (req, res) => {
                 ).then( async ()  => {
                     await newVideoPost.save();
                     res.status(200).send({msg: 'Uploaded successfully', video : newVideoPost});
-                })
-            }).catch((error) => {
-                res.status(400).send({ errors: [{  error }] });
-            });
+                }).catch((error) => {res.status(401).send({ errors: [{  error }] }); console.log(error)})
+            
 }
 exports.GetAll = async (req, res) => {
     try {
@@ -67,7 +73,7 @@ exports.GetAll = async (req, res) => {
 exports.getOneById = async (req, res) => {
     try {
         const Video = await video.find({_id : req.params.id});
-        res.status(200).send({ Post : Video });
+        res.status(200).send({ data : Video });
     }catch (error)
     {
         res.status(400).send({msg : error});

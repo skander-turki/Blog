@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import {ADD_TAG, GET_TAGS ,GET_TAG , DELETE_TAG} from '../actionTypes/tags';
+import {ADD_TAG, GET_TAGS ,GET_TAG , DELETE_TAG, GET_TAG_BY_ID} from '../actionTypes/tags';
 
 export const addTag = (tag) => async (dispatch) => {
     try {
@@ -35,5 +35,13 @@ export const deleteTag = (name) => async (dispatch) => {
         dispatch({type : DELETE_TAG , payload: result.data});
     } catch(error) {
         dispatch({ type: DELETE_TAG, payload: error.response.data.errors });
+    }
+}
+export const getTagById = (id) => async (dispatch) => {
+    try {
+        const result = await axios.get(`http://localhost:5000/tags/GetTagById/${id}`);
+        dispatch({type : GET_TAG_BY_ID, payload: result.data.tag});
+    } catch(error) {
+        dispatch({ type: GET_TAG_BY_ID, payload: error.response.data.errors });
     }
 }

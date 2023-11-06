@@ -1,0 +1,55 @@
+:root {
+    --slider-padding:5rem ;
+    --handle-size:4rem ;
+    --img-gap: .25rem ;
+    --blue: #287bff;
+    --white: #fff;
+    --grey: #f5f5f5;
+    --black1 : #000000; 
+    --black2 : #999;
+}
+.PostContainer {
+    margin: auto;
+    width: 70%;
+}
+.PostContainer .TitleWrapper {
+    text-align: center;
+    margin : 30px 15px ;
+}
+.PostContainer .DescriptionWrapper{
+    display: block;
+    text-align: center;
+}
+.PostContainer .DetailsWrapper {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    font-size: small;
+}
+.PostContainer .DetailsWrapper .infoWrapper {
+    display: flex;
+    justify-content: flex-start;
+    gap: 5px;
+    
+}
+
+.PostContainer .DetailsWrapper .infoWrapper .CategoryWrapper {
+    background-color: #000000;
+    color: var(--white);
+    text-transform: capitalize;
+    text-decoration: solid;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+}
+.PostContainer .DetailsWrapper .infoWrapper .tagsWrapper {
+    text-decoration: underline;
+    cursor: pointer;
+}
+.PostContainer .DetailsWrapper .infoWrapper .tagsWrapper:hover {
+    color: var(--blue);
+}
+.PostContainer .ImageWrapper {
+    margin-top: 10px;
+    width: 100%; 
+}

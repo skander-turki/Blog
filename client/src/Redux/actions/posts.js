@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from '../axiosConfig';
 
 import { 
   ADD_PODCAST,
@@ -12,7 +12,10 @@ import {
   GET_PODCASTS,
   DELETE_ARTICLE,
   DELETE_PODCAST,
-  DELETE_VIDEO
+  DELETE_VIDEO,
+  GET_TRENDING,
+  UPLOAD_IMAGE_VIDEO,
+  GET_POSTBYID
 } from '../actionTypes/posts';
 //*********** VIDEO */
 export const addVideo = (post, navigate) =>  async (dispatch) => {
@@ -28,7 +31,7 @@ export const GetAllVideos = () => (dispatch) => {
   axios.get("http://localhost:5000/videos/getAllVideos").then(
     (result) => {
      
-      dispatch({type: GET_VIDEOS, payload: result.data.data});
+      dispatch({type: GET_VIDEOS, payload: result.data});
     }
   ).catch( (error) => {
     dispatch({ type: GET_VIDEOS, payload: error.response.data.errors });
@@ -40,6 +43,17 @@ export const DeleteVideo = (id) => (dispatch) => {
     (result) => {dispatch({type: DELETE_VIDEO, payload: result});}
   ).catch (
     (error) => {dispatch({ type: DELETE_VIDEO, payload: error })}
+  )
+}
+export const UploadImageVideo = (image) => async (dispatch) => {
+  axios.post('http://localhost:5000/videos/uploadImage',image).then(
+    result => {
+      dispatch({type: UPLOAD_IMAGE_VIDEO, payload: result.data})
+    }
+  ).catch(
+    error => {
+      dispatch({ type: UPLOAD_IMAGE_VIDEO, payload: error.response.data.errors });
+    }
   )
 }
 
@@ -89,12 +103,16 @@ export const DeleteArticle = (id) => (dispatch) => {
 }
 //*********** PODCAST **************************************************************************** */
 export const UploadAudio = (Object) => async (dispatch) => {
-  axios.post('http://localhost:5000/podcast/uploadAudio' , Object).then(
+  console.log('test')
+  axios.post('http://localhost:5000/podcast/uploadAudio',Object).then(
+    
     result => {
+      console.log('test1')
       dispatch({type: UPLOAD_AUDIO, payload: result.data})
     }
   ).catch(
     error => {
+      console.log(error)
       dispatch({ type: UPLOAD_AUDIO, payload: error.response.data.errors });
     }
   )
@@ -143,5 +161,21 @@ export const DeletePodcast = (id) => (dispatch) => {
     (result) => {dispatch({type: DELETE_PODCAST, payload: result});}
   ).catch (
     (error) => {dispatch({ type: DELETE_PODCAST, payload: error })}
+  )
+}
+
+/*********** Media**************************************** */
+export const GetTrending = () => (dispatch) => {
+  axios.get("http://localhost:5000/media/gettrending").then(
+    (result) => {dispatch({type: GET_TRENDING, payload: result});}
+  ).catch(
+    error => {dispatch({ type: GET_TRENDING, payload: error.response.data.errors });}
+  )
+}
+export const GetPostById = (id) => (dispatch) => {
+  axios.get(`http://localhost:5000/media/getPostById/${id}`).then(
+    (result) => {dispatch({type: GET_POSTBYID, payload:result.data.post});}
+  ).catch(
+    error => {dispatch({type: GET_POSTBYID, payload: error}); console.log(error)}
   )
 }

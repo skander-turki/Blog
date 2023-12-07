@@ -3,7 +3,7 @@ const {podcast} = require("../models/podcastSchema");
 const {video} = require ('../models/videoSchema');
 const Post= require ('../models/postSchema')
 
-exports.GetTrendingPosts = async (req, res) => {
+exports.GetMostViewedPosts = async (req, res) => {
     const podcasts = podcast.find()
     const videos = video.find()
     const articles = article.find()

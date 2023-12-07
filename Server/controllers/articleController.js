@@ -41,11 +41,10 @@ exports.AddArticle = async (req,res) => {
         Category : fileStr.Category ,
         ViewNumber : 0,
         LikesNumber : 0,
+        LinkImage : fileStr.ImageLink,
         DatePost : Date.now()
     })
-    fileStr.links.map((obj) => {
-        newArticle.LinkImages.push(obj.r.link)
-    })
+     
     Promise.all(
         fileStr.tags.map((tag) => {
             return new Promise((resolve, reject) => {

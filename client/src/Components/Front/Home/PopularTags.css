@@ -1,0 +1,20 @@
+.TagsContent {
+    width: 100%;
+    padding: 40px;
+}
+.TagsContent .Title {
+    font-weight: 600;
+}
+.TagsContent .PopularTags {
+    margin-top: 40px;
+    display: flex;
+    flex-wrap: wrap ;
+    gap: 20px;
+}
+.TagsContent .PopularTags .tag {
+    background-color: var(--primarycolor);
+    padding: 5px 20px ;
+    border-radius: 15px;
+    cursor: pointer;
+
+}

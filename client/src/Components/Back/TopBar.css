@@ -36,6 +36,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 0 10px;
+    margin-left: -10px;
 }
 .toggle
 {

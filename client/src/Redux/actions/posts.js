@@ -13,7 +13,7 @@ import {
   DELETE_ARTICLE,
   DELETE_PODCAST,
   DELETE_VIDEO,
-  GET_TRENDING,
+  GET_MOST_VIEWED,
   UPLOAD_IMAGE_VIDEO,
   GET_POSTBYID
 } from '../actionTypes/posts';
@@ -165,11 +165,11 @@ export const DeletePodcast = (id) => (dispatch) => {
 }
 
 /*********** Media**************************************** */
-export const GetTrending = () => (dispatch) => {
-  axios.get("http://localhost:5000/media/gettrending").then(
-    (result) => {dispatch({type: GET_TRENDING, payload: result});}
+export const GetMostViewed = () => (dispatch) => {
+  axios.get("http://localhost:5000/media/getMostViewed").then(
+    (result) => { dispatch({  type: GET_MOST_VIEWED, payload: result.data});}
   ).catch(
-    error => {dispatch({ type: GET_TRENDING, payload: error.response.data.errors });}
+    error => {dispatch({ type: GET_MOST_VIEWED, payload: error.response.data.errors });}
   )
 }
 export const GetPostById = (id) => (dispatch) => {

@@ -2,9 +2,10 @@ const mongoose = require("mongoose");
 const postSchema = require("./postSchema");
 
 const articleSchema = new mongoose.Schema({
-    LinkImages : [{
+    LinkImage: {
         type : String, 
-    }],
+        required : true,
+    },
     Description : {
         type: String,
         required : true,

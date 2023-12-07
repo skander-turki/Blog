@@ -11,12 +11,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate  } from 'react-router-dom';
 import DisplayImages from './DisplayImages';
 import { addVideo, UploadImageVideo } from '../../Redux/actions/posts';
-import { uploadVideo } from '../../Services/fileUploader';
 import {getTags} from '../../Redux/actions/tags';
 import { useState } from 'react';
-import { useEffect } from 'react';
-import { CloudinaryComponent } from 'cloudinary-react';
-import { Image, Video, CloudinaryContext, Transformation } from 'cloudinary-react';
 
 
 

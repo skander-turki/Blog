@@ -3,8 +3,10 @@ import {logout} from '../../Redux/actions/user'
 
 import './SideMenu.css'
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 function SideMenu (props) {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [isNavigationActive, setIsNavigationActive] = React.useState(false);
     React.useEffect(()=> {
         setIsNavigationActive(props.isNavigationActive)
@@ -74,9 +76,18 @@ function SideMenu (props) {
                         </a>
                     </li>
                     <li>
+                        <a href="/Dashboard/Theme">
+                            <span className='icon'><ion-icon name="color-palette-outline"></ion-icon></span>
+                            <span className='title'>Theme</span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="/">
                             <span className='icon'><ion-icon name="log-out-outline"></ion-icon></span>
-                            <span onClick={() => {dispatch(logout())}} className='title'>Sign Out</span>
+                            <span onClick={() => {
+                                                    dispatch(logout());
+                                                    navigate('/');
+                                            }} className='title'>Sign Out</span>
                         </a>
                     </li>
                 </ul>

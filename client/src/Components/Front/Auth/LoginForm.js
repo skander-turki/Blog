@@ -365,7 +365,8 @@ function LoginForm  (props)  {
                                     textTransform :'capitalize',
                                     width: '100%',
                                     marginTop: '20px',
-                                    marginBottom: '20px'
+                                    marginBottom: '20px',
+                                    color: 'white !important'
                                     }}
                                 
                                 >Connexion</Button>

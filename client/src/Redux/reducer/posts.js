@@ -13,7 +13,7 @@ import {
           GET_ARTICLES,
           GET_VIDEOS,
           GET_PODCASTS,
-          GET_TRENDING,
+          GET_MOST_VIEWED,
           UPLOAD_IMAGE_VIDEO,
           GET_POSTBYID
         } from '../actionTypes/posts';
@@ -26,7 +26,7 @@ const initialState = {
   articles : [],
   videos : [],
   podcasts : [],
-  trending: [],
+  most_viewed: [],
   errors: []
 };
 
@@ -100,10 +100,10 @@ const postReducer = (state = initialState, { type, payload }) => {
       ...state,
       audio:payload
     };
-    case GET_TRENDING:
+    case GET_MOST_VIEWED:
       return {
         ...state,
-        trending: payload
+        most_viewed: payload
       };
     case GET_POSTBYID:
       return {

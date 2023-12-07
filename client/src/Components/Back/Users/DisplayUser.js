@@ -1,5 +1,5 @@
 import * as React from 'react';
-import '../../../Pages/Back/Style.css';
+import '../../../Pages/Back/UserPage.css';
 import { useDispatch, useSelector } from 'react-redux';
 import {GetAllUsers, DeleteUser} from '../../../Redux/actions/user';
 import ReactPaginate from 'react-paginate';
@@ -57,7 +57,7 @@ function DisplayUsers () {
                     </tbody>
                 </table>
                     <ReactPaginate
-                        activeClassName={'item active '}
+                        activeClassName={'itemactive '}
                         breakClassName={'item break-me '}
                         breakLabel={'...'}
                         containerClassName={'pagination'}

@@ -1,0 +1,94 @@
+:root {
+    --primarycolorTest : #eee3d3; 
+    --secondarycolorTest : #323232;
+    --thirdcolorTest: #000000 ;
+    --fourthcolorTest: #FFFFFF ; 
+    --Navigation-font-sizeTest : 20px;
+    --title-font-sizeTest: 60px ;
+    --desc-font-sizeTest: 30px ;
+}
+
+.TemplateMain {
+    width: 100%;
+}
+.NavigationSectionTest {
+    background-color: var(--primarycolorTest);
+    height: 400px;
+}
+.NavigationSectionTest .NavigationBar {
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 80px ;
+}
+.NavigationSectionTest .NavigationBar.scrolled {
+    background-color: var(--fourthcolorTest);
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 80px ;
+    width: 100%;
+    border-bottom: 1px solid var(--appBar-text-color);
+}
+.NavigationSectionTest .NavigationBar img {
+    height: 80px;
+}
+.NavigationSectionTest .NavigationBar .Navigation {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 60px;
+    list-style: none;
+}
+.NavigationSectionTest .NavigationBar .Navigation a {
+    font-size: var(--Navigation-font-sizeTest);
+    text-decoration: none;
+    color: var(--secondarycolorTest);
+}
+.NavigationSectionTest .NavigationBar .Navigation button {
+    text-decoration: none;
+    color: var(--secondarycolorTest);
+    font-size: 17px;
+    border: 2px solid var(--secondarycolorTest);
+    padding: 7px 15px;
+    border-radius: 50px;
+    background-color: transparent;
+    cursor: pointer;
+}
+.NavigationSectionTest .NavigationBar .Navigation button:hover {
+    background-color: var(--secondarycolorTest);
+    color: var(--fourthcolorTest);
+}
+.NavigationSectionTest .AppBarContent {
+    padding-top: 50px;
+    padding-left: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 40px;
+}
+.NavigationSectionTest .AppBarContent h1 {
+    font-size: var(--title-font-sizeTest);
+    color: var(--thirdcolorTest);
+}
+.NavigationSectionTest .AppBarContent p {
+    font-size: var(--desc-font-sizeTest);
+    color: var(--thirdcolorTest);
+}
+.NavigationSectionTest .AppBarContent button {
+    color: var(--fourthcolorTest);
+    font-size:  25px;
+    border: 2px solid var(--secondarycolorTest);
+    padding: 15px 15px;
+    border-radius: 50px;
+    background-color: var(--secondarycolorTest);
+    cursor: pointer;
+    width: auto;
+}
+.NavigationSectionTest .AppBarContent button:hover {
+    background-color: var(--thirdcolorTest);
+}

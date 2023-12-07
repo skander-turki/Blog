@@ -18,5 +18,5 @@ export const UPLOAD_IMAGE_PODCAST = 'UPLOAD_IMAGE_PODCAST';
 export const DELETE_PODCAST = 'DELETE_PODCAST';
 
 /*Media*/ 
-export const GET_TRENDING = 'GET_TRENDING';
+export const GET_MOST_VIEWED = 'GET_MOST_VIEWED';
 export const GET_POSTBYID = 'GET_POSTBYID';

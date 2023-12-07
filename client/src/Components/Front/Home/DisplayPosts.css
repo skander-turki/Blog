@@ -1,0 +1,52 @@
+.ListPosts {
+    padding-right: var(--sides-padding);
+}
+.ListPosts .cardPost {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: var(--sides-padding);
+    cursor: pointer;
+}
+.ListPosts .cardPost .Details {
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
+    padding-right: 30px;
+}
+
+.ListPosts .cardPost .Details .DetailHeader {
+    display: flex;
+    justify-content: space-between;
+    font-size: small;
+    padding-bottom: 10px;
+}
+
+.ListPosts .cardPost .Details .DetailHeader  .CategoryWrapper {
+    background-color: #000000;
+    color: var(--white);
+    text-transform: capitalize;
+    text-decoration: solid;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    padding: 2px;
+}
+
+
+.ListPosts .cardPost .Details .Title {
+    font-size: var(--posts-Title-font-size);
+    font-weight: var(--posts-Title-font-weight);
+}
+
+.ListPosts .cardPost .Details .Description {
+    font-size: var(--posts-Description-font-size);
+    max-height: 4.2em;
+    overflow: hidden;
+    line-height: 1.4em;
+}
+
+.ListPosts .cardPost .Image {
+    width: 250px;
+    height: 150px;
+    border-radius: 5px
+}

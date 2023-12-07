@@ -2,13 +2,10 @@ import * as React from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { currentUser } from '../../Redux/actions/user';
 import { Navigate } from "react-router-dom";
-import AppBarAdmin from '../../Components/Back/AppBarAdmin';
-import Menu from '../../Components/Back/Menu';
-import Box from '@mui/material/Box';
 import { Outlet } from "react-router-dom";
-import SideMenu from '../../Components/Back/SideMenu';
-import TopBar from '../../Components/Back/TopBar';
-import '../../Components/Back/SideMenu.css'
+import SideMenu from '../../Components/Back/Basic/SideMenu';
+import AppBar from '../../Components/Back/Basic/AppBar';
+import './Dashboard.css'
 
 function Dashboard () {
     const [isNavigationActive, setIsNavigationActive] = React.useState(false);
@@ -43,14 +40,14 @@ function Dashboard () {
         { isAdmin === false ?  
         <Navigate to='/' replace />
         : 
-        
-            <div className='container'> 
-                <SideMenu isNavigationActive={isNavigationActive}/>
-                <div className={`main ${isNavigationActive ? 'active' : ''}`}>
-                    <TopBar user={user} toggleNavigation={toggleNavigation}  />   
+        <>
+            <SideMenu />
+            <AppBar user={user}   /> 
+                <div className='main'> 
                     <Outlet />
-                </div> 
-            </div>
+                </div>
+        </>
+        
         }
         </>
     );

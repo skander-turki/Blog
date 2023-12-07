@@ -1,0 +1,41 @@
+:root
+{
+    --blue: #287bff;
+    --white: #fff;
+    --grey: #f5f5f5;
+    --black1 : #222; 
+    --black2 : #999;
+}
+.Type-box {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+.Title-Type {
+    font-weight: 600;
+    font-size:xx-large;
+    color: var(--blue);
+}
+.Type-Select {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 3px solid var(--blue);
+    height: 50px;
+    font-size: large;
+    cursor: pointer;
+}
+.Type-button {
+    background-color: #fff;
+    border: 3px solid var(--blue);
+    color: var(--blue);
+    border-radius: 15px;
+    font-size: x-large;
+    font-weight: 600;
+    cursor: pointer;
+}
+.Type-button:hover {
+    background-color: var(--blue);
+    color: #fff;
+    
+}

@@ -1,0 +1,44 @@
+.weekly-post-container {
+    margin-top: var(--sides-padding);
+    padding: 0 var(--sides-padding);
+    display: flex;
+    justify-content: space-between;  
+    cursor: pointer;  
+    height: 300px;
+    border-bottom: 1px solid var(--primarycolor);
+}
+.weekly-post-container .Details {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: var(--weeklyPost-margin);
+}
+.weekly-post-container .Details .Title1 {
+    font-weight: var(--WeeklyPost-Title1-font-weight);
+    color: var(--secondarycolor);
+    text-transform: uppercase;
+}
+.weekly-post-container .Details .Title2 {
+    font-size: var(--WeeklyPost-Title2-font-size);
+    color: var(--secondarycolor);
+}
+.weekly-post-container .Details .Description {
+    margin-top: 10px;
+    max-height: 4.2em;
+    overflow: hidden;
+    line-height: 1.4em;
+    font-size: var(--weeklyPost-Description-font-size);
+}
+.weekly-post-container .Image {
+    width: 400px;
+    height: 250px;
+    
+    border-radius: 7%;
+}
+.weekly-post-container:hover .Details .Title2 {
+    text-decoration: underline;
+}
+.weekly-post-container:hover .Image {
+    transform: scale(1.1);
+}

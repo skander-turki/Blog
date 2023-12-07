@@ -1,0 +1,14 @@
+.Home-content .Content {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 var(--sides-padding);
+}
+.Home-content .Content .DisplayPosts {
+    padding-top: 40px ;
+    width: 66%;
+    border-right: 1px solid var(--primarycolor);
+    overflow-x: hidden;
+}
+.Home-content .Content .secondPart {
+    width : 34%;
+}

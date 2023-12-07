@@ -1,5 +1,5 @@
 import * as React from 'react';
-import './Style.css';
+import './UserPage.css';
 import { useDispatch, useSelector } from 'react-redux';
 import {GetAllUsers} from '../../Redux/actions/user';
 import DisplayUsers from '../../Components/Back/Users/DisplayUser';

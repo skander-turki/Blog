@@ -15,14 +15,15 @@
     --black1 : #222; 
     --black2 : #999;
 }
-form {
+
+.FormUser form {
     margin-top: 25px;
 }
-form .input-box{
+.FormUser form .input-box{
     height: 52px;
     margin: 9px 0;
 }
-form .input-box input{
+.FormUser form .input-box input{
     height: 80%;
     width: 100%;
     outline: none;
@@ -39,11 +40,11 @@ form .input-box input{
 .input-box input:valid{
     border-color: var(--blue);
 }
-form .Check{
+.FormUser form .Check{
     display: flex;
     align-items: center;
 }
-form .Check h3{
+.FormUser form .Check h3{
     color: var(--black1);
     font-size: 14px;
     font-weight: 500;
@@ -77,7 +78,7 @@ form .Check h3{
 {
     border-color: var(--blue);
 }
-form .file 
+.FormUser form .file 
 {
     margin: 10px;
     display: inline-block;

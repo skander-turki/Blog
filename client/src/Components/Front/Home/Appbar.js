@@ -37,18 +37,13 @@ function Appbar(props) {
         <>
             {!props.isAuth ?
             <div className="NavigationSection">
-                <div className={`NavigationBar ${scrolled ? 'scrolled' : ''}`}>
-                    <img src="https://res.cloudinary.com/turkiskander/image/upload/v1700613104/Internship/Assets/LogoTest_x9oddp.png"/>
-                    <ul className="Navigation">
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Write</a></li>
-                        <button onClick={handleClickLogin}>Get Started</button>
-                    </ul>
-                </div>  
-                <div className="AppBarContent">
-                    <h1>Echoing Echoes .</h1>
-                    <p>Unveiling Untold Stories.</p>
-                    <button>Start reading</button>
+              <div className={`NavigationBar ${scrolled ? 'scrolled' : ''}`}>
+                <img src={props.theme.Logo}/>
+                <ul className="Navigation">
+                  <li><a href="#">About Us</a></li>
+                  <li><a href="#">Write</a></li>
+                  <button onClick={handleClickLogin}>Get Started</button>
+                </ul>
                 </div>
             </div>:
             <div className="UserNavigationBar">

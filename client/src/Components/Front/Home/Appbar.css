@@ -1,27 +1,36 @@
+@font-face {
+    font-family: 'roboto';
+    src: url('../../../Assets/Fonts/Roboto-Medium.ttf') format('woff');
+    
+  }
 .NavigationSection {
     background-color: var(--primarycolor);
-    height: 400px;
+    height: 10vh;
 }
 .NavigationSection .NavigationBar {
-    height: 80px;
+    height: 10vh;
     display: flex;
     justify-content: space-between;
-    padding: 0 80px ;
+    align-items: center;
+    align-content: center;
+    padding: 0 80px;
 }
 .NavigationSection .NavigationBar.scrolled {
-    background-color: var(--fourthcolor);
+    background-color: var(--primarycolor);
     position: fixed;
     top: 0;
     z-index: 1000;
     height: 80px;
     display: flex;
     justify-content: space-between;
-    padding: 0 80px ;
+    align-items: center;
+    padding: 0 80px;
     width: 100%;
-    border-bottom: 1px solid var(--secondarycolor);
+    border-bottom: 1px solid #03091b42;
 }
 .NavigationSection .NavigationBar img {
-    height: 80px;
+    height: 40px;
+    width: 100px;
 }
 .NavigationSection .NavigationBar .Navigation {
     display: flex;
@@ -33,52 +42,25 @@
 .NavigationSection .NavigationBar .Navigation a {
     font-size: var(--Navigation-font-size);
     text-decoration: none;
-    color: var(--secondarycolor);
+    color: var(--thirdcolor);
+    font-family: 'roboto' , sans-serif;
 }
 .NavigationSection .NavigationBar .Navigation button {
     text-decoration: none;
-    color: var(--secondarycolor);
+    color: var(--thirdcolor);
     font-size: 17px;
-    border: 2px solid var(--secondarycolor);
+    border: 2px solid var(--thirdcolor);
+    font-family: 'roboto' , sans-serif;
     padding: 7px 15px;
     border-radius: 50px;
     background-color: transparent;
     cursor: pointer;
 }
 .NavigationSection .NavigationBar .Navigation button:hover {
-    background-color: var(--secondarycolor);
-    color: var(--fourthcolor);
-}
-.NavigationSection .AppBarContent {
-    padding-top: 50px;
-    padding-left: 80px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 40px;
-}
-.NavigationSection .AppBarContent h1 {
-    font-size: var(--title-font-size);
-    color: var(--thirdcolor);
-}
-.NavigationSection .AppBarContent p {
-    font-size: var(--desc-font-size);
-    color: var(--thirdcolor);
-}
-.NavigationSection .AppBarContent button {
-    color: var(--fourthcolor);
-    font-size:  25px;
-    border: 2px solid var(--secondarycolor);
-    padding: 15px 15px;
-    border-radius: 50px;
-    background-color: var(--secondarycolor);
-    cursor: pointer;
-    width: auto;
-}
-.NavigationSection .AppBarContent button:hover {
     background-color: var(--thirdcolor);
+    color: var(--primarycolor);
 }
+
 
 
 .UserNavigationBar {

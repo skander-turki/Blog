@@ -70,8 +70,8 @@
 .inputWrapper .input:focus {
     border: 2px solid var(--blue);
 }
-.input:valid ~ span,
-.input:focus ~ span 
+.input:valid ~ .span,
+.input:focus ~ .span 
 {
     color: var(--blue);
     transform: translateX(10px) translateY(-7px);

@@ -6,13 +6,15 @@
     font-weight: 600;
 }
 .TagsContent .PopularTags {
-    margin-top: 40px;
+    margin-top: 20px;
     display: flex;
     flex-wrap: wrap ;
     gap: 20px;
 }
 .TagsContent .PopularTags .tag {
-    background-color: var(--primarycolor);
+    background-color: var(--secondarycolor);
+    color: var(--thirdcolor);
+    font-family: "Roboto";
     padding: 5px 20px ;
     border-radius: 15px;
     cursor: pointer;

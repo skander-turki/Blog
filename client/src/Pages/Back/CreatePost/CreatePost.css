@@ -1,11 +1,11 @@
-.step-wizard {
+.post-container .step-wizard {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: flex-start;
     margin-top: 20px;
 }
-.step-wizard-list {
+.post-container .step-wizard-list {
     background-color: #fff;
     box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
     color: #333;
@@ -16,7 +16,7 @@
     position: relative;
     z-index: 10;
 }
-.step-wizard-item {
+.post-container .step-wizard-item {
     padding: 0 20px;
     flex-basis: 0;
     flex-grow: 1;
@@ -27,7 +27,7 @@
     min-width: 170px;
     position: relative;
 }
-.step-wizard-item + .step-wizard-item:after {
+.post-container .step-wizard-item + .step-wizard-item:after {
     content: "";
     position: absolute;
     left: 0;
@@ -38,7 +38,7 @@
     transform: translateX(-50%);
     z-index: -10;
 }
-.progress-count {
+.post-container .progress-count {
     height: 40px;
     width: 40px;
     display: flex;
@@ -51,7 +51,7 @@
     z-index: 10;
     color: transparent;
 }
-.progress-count:after {
+.post-container .progress-count:after {
     content: "";
     height: 40px;
     width: 40px;
@@ -63,7 +63,7 @@
     border-radius: 50%;
     z-index: -10;
 }
-.progress-count:before {
+.post-container .progress-count:before {
     content: "";
     height: 10px;
     width: 20px;
@@ -75,30 +75,30 @@
     transform: translate(-50%, -60%) rotate(-45deg);
     transform-origin: center center;
 }
-.progress-label {
+.post-container .progress-label {
     font-size: 14px;
     font-weight: 600;
     margin-top: 10px;
 }
-.current-item .progress-count:before,
-.current-item ~ .step-wizard-item .progress-count:before{
+.post-container .current-item .progress-count:before,
+.post-container .current-item ~ .step-wizard-item .progress-count:before{
     display: none;
 }
-.current-item ~ .step-wizard-item .progress-count:after {
+.post-container .current-item ~ .step-wizard-item .progress-count:after {
     height: 10px;
     width: 10px;
 }
-.current-item ~ .step-wizard-item .progress-label {
+.post-container .current-item ~ .step-wizard-item .progress-label {
     opacity: 0.5;
 }
-.current-item .progress-count:after {
+.post-container .current-item .progress-count:after {
     background : #fff;
     border: 2px solid #287bff;
 }
-.current-item .progress-count {
+.post-container .current-item .progress-count {
     color: #287bff;
 }
-.create-post-box {
+.post-container .create-post-box {
     background-color: #fff;
     box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
     width: 90%;

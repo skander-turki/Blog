@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {GetMostViewed , GetPostById} from "../../Redux/actions/posts"
 import { useDispatch, useSelector } from "react-redux";
 import WeeklyyPost from "../../Components/Front/Home/WeeklyPost";
@@ -10,22 +10,36 @@ import DisplayPosts from "../../Components/Front/Home/DisplayPosts";
 import UserDisplayPost from "../../Components/Front/Home/UserDisplayPost";
 import PopularTags from "../../Components/Front/Home/PopularTags";
 import BestAuthor from "../../Components/Front/Home/BestAuthor";
+import SignUpFlow from "../../Components/Front/Auth/SignUpFlow";
 
 function HomeContent (props) {
-
+    console.log(props.user)
+    const [scrolled, setScrolled] = useState(false);
+    useEffect(() => {
+        const handleScroll = () => {
+          if (window.scrollY > 650) {
+            setScrolled(true);
+          } else {
+            setScrolled(false);
+          }
+        };
+    
+        window.addEventListener('scroll', handleScroll);
+    
+        return () => {
+          window.removeEventListener('scroll', handleScroll);
+        };
+      }, []);
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(GetMostViewed());
-        dispatch(GetPostById("653fb63e5624db942b617522"))
     }, [dispatch]);
     const MostViewed = useSelector((state) => state.postReducer.most_viewed);
-    const WeeklyPost = useSelector((state) => state.postReducer.post );
-    console.log(MostViewed)
     return(
         <div className="Home-content">
             {!props.isAuth ?
-            WeeklyPost.Titre !== undefined ?
-                <WeeklyyPost data={WeeklyPost}/>:
+            MostViewed.length !== 0  ?
+                <WeeklyyPost data={MostViewed.slice(4,7)}/>:
                 <Box sx={{ display: 'flex' }}>
                     <CircularProgress />
                 </Box>: null}
@@ -39,16 +53,20 @@ function HomeContent (props) {
                         </Box>
                     }
                 </div>
-                <div className="secondPart">
+                <div className={`secondPart ${scrolled ? 'scrolled' : ''}`}>
                     <PopularTags />
                     <BestAuthor />
                 </div>
             </div>:
-            <div className="Content">
-                <div className="DisplayPosts">
-                    <UserDisplayPost />    
+            <>
+                <SignUpFlow user={props.user}/> 
+                <div className="Content">
+                    <div className="DisplayPosts">
+                        <UserDisplayPost />    
+                    </div>
                 </div>
-            </div>
+            </>
+            
             }
         </div>
     );

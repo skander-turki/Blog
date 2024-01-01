@@ -38,11 +38,25 @@ export const login = (user) => async (dispatch) => {
   })
 
 };
-export const register = (user , navigate) => async (dispatch) => {
-    axios.post('http://localhost:5000/users/register', user).then((result) => { 
+const circularSafeJsonStringify = (obj) => {
+  const seen = new WeakSet();
+  return JSON.stringify(obj, function (key, value) {
+    if (typeof value === 'object' && value !== null) {
+      if (seen.has(value)) {
+        return '[Circular Reference]';
+      }
+      seen.add(value);
+    }
+    return value;
+  });
+};
+export const register = (user) => async (dispatch) => {
+  const circularSafeUser = JSON.parse(circularSafeJsonStringify(user));
+    axios.post('http://localhost:5000/users/register', circularSafeUser).then((result) => { 
       dispatch({ type: REGISTER_USER, payload: result.data }); 
     }).catch((error) => { 
-    dispatch({ type: REGISTER_USER, payload: error.response.data.errors });
+      console.log(error)
+    dispatch({ type: REGISTER_USER, payload: error });
     })
 };
 export const AddUser = (user ) => async (dispatch) => {

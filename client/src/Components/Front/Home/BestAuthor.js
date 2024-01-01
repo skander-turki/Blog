@@ -1,8 +1,9 @@
 import React from "react";
-import "./BestAuthor.css"
+import "./BestAuthor.css";
+
 
 function BestAuthor () {
-
+   
     return(
         <div className="BestAuthor">
             <span className="Title">Popular author</span>

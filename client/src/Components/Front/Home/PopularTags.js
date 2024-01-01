@@ -16,7 +16,7 @@ function PopularTags() {
             <span className="Title">PopularTags</span>
             <div className="PopularTags">
                 {
-                    Array.isArray(Tags) && Tags.slice(0, 10).map((tag) => 
+                    Array.isArray(Tags) && Tags.slice(0, 7).map((tag) => 
                         <span className="tag">{tag.name}</span>
                     )
                 }

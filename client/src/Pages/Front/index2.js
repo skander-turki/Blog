@@ -36,10 +36,10 @@ function index2() {
     }, [theme])
     return(
         <div >
-            <Appbar isAuth={isAuth} user={user} handleLoginClick={handleLoginClick}/>
-            <LoginForm isShowLogin={isShowLogin}  handleLoginClick={handleLoginClick}/>
-            <HomeContent  isAuth={isAuth} user={user}/>
-            <Footer />
+            <Appbar isAuth={isAuth} user={user} handleLoginClick={handleLoginClick} theme={theme}/>
+            <LoginForm isShowLogin={isShowLogin}  handleLoginClick={handleLoginClick} theme={theme}/>
+            <HomeContent  isAuth={isAuth} user={user} />
+            
 
             
         </div>

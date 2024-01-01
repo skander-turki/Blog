@@ -1,14 +1,20 @@
 .Home-content .Content {
     display: flex;
     justify-content: space-between;
-    margin: 0 var(--sides-padding);
+    margin: 20px var(--sides-padding);
 }
 .Home-content .Content .DisplayPosts {
     padding-top: 40px ;
-    width: 66%;
-    border-right: 1px solid var(--primarycolor);
+    width: 68%;
+    border-right: 1px solid #03091b42;
     overflow-x: hidden;
 }
 .Home-content .Content .secondPart {
     width : 34%;
+}
+.Home-content .Content .secondPart.scrolled {
+    width : 34%;
+    position: fixed;
+    top: 60px;
+    right: 0;
 }

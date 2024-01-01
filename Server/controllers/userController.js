@@ -30,7 +30,7 @@ exports.AddUser = async(req, res) => {
 }
 
 exports.Register = async (req, res) => {
-  
+    console.log("7chineh")
     try {
       const {   Mail, HashedPassword, Birthdate } = req.body;
       // test email
@@ -63,6 +63,7 @@ exports.Register = async (req, res) => {
       res.status(200).send({ status : "200", token: Token});
     } catch (error) {
       res.status(401).send({ errors: [{ msg: error }] });
+      console.log(error);
     }
   };
 exports.GetUsers = async (req, res) => {

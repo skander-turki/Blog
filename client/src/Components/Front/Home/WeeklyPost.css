@@ -50,12 +50,16 @@
     text-decoration: underline;
     cursor: pointer;
 }
-.TrendingContainer .ListTrending .box .Category {
+.TrendingContainer .ListTrending .box .Tags{
+    margin-top: 20px;
+    width: 90%;
+    display: flex;
+    gap: 10px;
+}
+.TrendingContainer .ListTrending .box .Tags .Tag {
     font-family: "roboto";
     font-size: 20px;
     color: var(--secondarycolor);
-    margin-top: 20px;
-    margin-right: 65%;
 }
 .TrendingContainer .ListTrending .box .InfoWrapper {
     width: 85%;
@@ -66,7 +70,7 @@
     color: rgb(88, 87, 87);
 }
 .TrendingContainer .ListTrending .box .InfoWrapper span {
-    font-size: 20px;
+    font-size: 16px;
 }
 .TrendingContainer .ListTrending .box .InfoWrapper span ion-icon {
     margin-right: 10px;

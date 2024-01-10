@@ -1,12 +1,10 @@
 const express= require('express');
 //const bodyParser= require ('body-parser'); 
 const usersRoutes= require ('./routes/user.js');
-const videoRoutes= require ('./routes/video.js');
-const artcileRoutes = require('./routes/article.js');
 const tagsRoutes = require('./routes/tags.js');
-const podcastRoutes = require('./routes/podcast.js');
-const mediaRoutes = require('./routes/Media.js');
 const themeRoutes = require('./routes/theme.js');
+const postRoutes = require('./routes/posts.js');
+const viewRoutes = require('./routes/view.js');
 const connectDB =require ('./config/dbConnect.js');
 const dotenv = require("dotenv");
 const cors = require('cors');
@@ -33,12 +31,10 @@ app.use(fileupload({tempFileDir: '/tmp/'}))
 
 connectDB();
 app.use('/users', usersRoutes);
-app.use('/videos', videoRoutes);
-app.use('/articles', artcileRoutes);
 app.use('/tags',tagsRoutes);
-app.use('/podcast', podcastRoutes);
-app.use('/media', mediaRoutes);
 app.use('/theme', themeRoutes);
+app.use('/Posts', postRoutes);
+app.use('/view', viewRoutes);
 const PORT = process.env.PORT;
 
 app.listen(PORT, () => console.log(`server running on port : http://localhost:${PORT}`) );

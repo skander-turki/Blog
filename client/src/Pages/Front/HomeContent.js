@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import {GetMostViewed , GetPostById} from "../../Redux/actions/posts"
+import {GetAllPost , GetPostById} from "../../Redux/actions/posts"
 import { useDispatch, useSelector } from "react-redux";
 import WeeklyyPost from "../../Components/Front/Home/WeeklyPost";
 import CircularProgress from '@mui/material/CircularProgress';
@@ -13,7 +13,6 @@ import BestAuthor from "../../Components/Front/Home/BestAuthor";
 import SignUpFlow from "../../Components/Front/Auth/SignUpFlow";
 
 function HomeContent (props) {
-    console.log(props.user)
     const [scrolled, setScrolled] = useState(false);
     useEffect(() => {
         const handleScroll = () => {
@@ -32,14 +31,14 @@ function HomeContent (props) {
       }, []);
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(GetMostViewed());
+        dispatch(GetAllPost());
     }, [dispatch]);
-    const MostViewed = useSelector((state) => state.postReducer.most_viewed);
+    const MostViewed = useSelector((state) => state.postReducer.AllPost);
     return(
         <div className="Home-content">
             {!props.isAuth ?
             MostViewed.length !== 0  ?
-                <WeeklyyPost data={MostViewed.slice(4,7)}/>:
+                <WeeklyyPost data={MostViewed.slice(0,3)}/>:
                 <Box sx={{ display: 'flex' }}>
                     <CircularProgress />
                 </Box>: null}
@@ -59,13 +58,15 @@ function HomeContent (props) {
                 </div>
             </div>:
             <>
-                <SignUpFlow user={props.user}/> 
+                 {!props.user.IsValid ?
+                <SignUpFlow user={props.user}/>  
+                : null}
                 <div className="Content">
                     <div className="DisplayPosts">
                         <UserDisplayPost />    
                     </div>
                 </div>
-            </>
+            </> 
             
             }
         </div>

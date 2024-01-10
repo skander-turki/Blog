@@ -10,16 +10,22 @@ function DisplayPosts (props) {
                 <div className="cardPost">
                     <div className="Details">
                         <div className="DetailHeader">
-                            <span className="CategoryWrapper">{post.Category}</span>
-                            <span>{moment(post.DatePost).format('DD MMMM YYYY') }</span>
+                            <div className="Author">
+                                <img src={post.User.Image} />
+                                <span>{post.User.Firstname} {post.User.Lastname}</span>
+                            </div>
+                            <div className="Tags">
+                                {post.tags.map((t) =><span className="Tag">#{t.name}</span> )}
+                            </div>
                         </div>
-                        <span className="Title">{post.Titre}</span>
+                        <span className="Title">{post.Title}</span>
                         <span className="Description">{post.Description}</span>
+                        <div className="InfoWrapper">
+                                <span className="Views">{post.Views.length} Views</span>
+                                <span>{moment(post.DatePost).format('DD MMMM YYYY') }</span>
+                        </div>
                     </div>
-                    {post.Post === "Article" ?
-                        <img className="Image" src={post.LinkImages[0]} />:
-                        <img className="Image" src={post.LinkImage} />
-                    }
+                    <img className="Image" src={post.LinkImage} />
                 </div>
             )}
         </div>

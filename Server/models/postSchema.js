@@ -7,7 +7,7 @@ const baseOption = {
 };
 
 const postSchema = new mongoose.Schema({
-    Titre : {
+    Title : {
         type : String, 
         required: true,
         min: 6,
@@ -23,18 +23,20 @@ const postSchema = new mongoose.Schema({
         type : Date,
         required: true,
     },
-    ViewNumber: {
-        type : Number,
+    IsValid: {
+        type: Boolean,
         required: true,
+        },
+    User: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref : 'User'
     },
-    LikesNumber: {
-        type : Number,
-        required: true,
-    },
-    Category: {
-        type : String,
-        required: true
-    },
+    Views:[
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref : 'Views'
+        }
+    ],
     tags: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Tags' }]
 }, baseOption); 
 

@@ -10,3 +10,4 @@ export const UPLOAD_IMAGE = 'UPLOAD_IMAGE';
 export const GET_USERS = 'GET_USERS';
 export const DELETE_USER = 'DELETE_USER';
 export const ADD_USER = 'ADD_USER';
+export const VALIDATE_USER = 'VALIDATE_USER';

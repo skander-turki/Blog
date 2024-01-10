@@ -11,11 +11,13 @@ import {
           UPLOAD_IMAGE,
           GET_USERS,
           DELETE_USER,
-          ADD_USER
+          ADD_USER,
+          VALIDATE_USER
            } from '../actionTypes/user';
 
 // initialstate
 const initialState = {
+  validateUser:{},
   result:{},
   users:[],
   user: {},
@@ -51,6 +53,8 @@ const userReducer = (state = initialState, { type, payload }) => {
       return { ...state , user : payload };
     case ADD_USER:
       return { ...state , result : payload };
+    case VALIDATE_USER:
+      return { ...state , validateUser : payload };
     case CURRENT_USER:
       return { ...state, user: payload.user, isAuth: payload.isAuth };
     case LOGOUT_USER:

@@ -10,7 +10,7 @@ function PopularTags() {
     useEffect(() => {
         dispatch(getTags())
       }, [dispatch]);
-    const Tags = useSelector((state) => state.tagReducer.tag );
+    const Tags = useSelector((state) => state.tagReducer.tags);
     return(
         <div className="TagsContent">
             <span className="Title">PopularTags</span>

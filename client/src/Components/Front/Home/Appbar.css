@@ -95,23 +95,25 @@
 .UserNavigationBar .UserNavigation a {
     font-size: var(--Navigation-font-size);
     text-decoration: none;
-    color: var(--secondarycolor);
+    color: var(--primarycolor);
 }
 .UserNavigationBar .UserNavigation .profile {
     position: relative; 
   }
 .UserNavigationBar .UserNavigation  .profile img {
     border-radius: 50%;
-    height: 40px;
+    height: 50px;
+    width: 50px;
     cursor: pointer;
 }
 .UserNavigationBar .UserNavigation  .profile .scroll-menu {
     position: absolute;
-    top: 50px;
+    top: 60px;
     left: -200px;
     width: 250px;
     z-index: 1000;
     border: 1px solid var(--primarycolor);
+    border-top: none;
     border-radius: 5px;
     box-shadow: 3px 6px var(--primarycolor);
 }

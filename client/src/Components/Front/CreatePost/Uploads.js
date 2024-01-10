@@ -4,7 +4,6 @@ import Alert from '@mui/material/Alert';
 
 
 function Uploads (props) {
-    const [test , settest] = React.useState("Article");
     const [IsValid , setIsValid] = React.useState(false);
     const [IsClicked , setClicked] = React.useState(false);
     const [LinkImage , setLinkImage] = React.useState("");
@@ -117,14 +116,14 @@ function Uploads (props) {
 
     }
     React.useEffect (() => {
-        if(test === "Article")
+        if(props.data.Type === "Article")
         {
             if(LinkImage !== "")
             setIsValid(true)
             else 
             setIsValid(false)
         }
-        else if (test === "Video")
+        else if (props.data.Type === "Video")
         {
             if(LinkImage !== "" && LinkVideo !== "")
             setIsValid(true)
@@ -159,7 +158,7 @@ function Uploads (props) {
     return(
         <>
             {
-                props.data.Post === "Article" ? 
+                props.data.Type === "Article" ? 
                 <div className='UploadContainer'>
                     <header>Image Uploader</header>
                     <form onClick={handleFormClick}>
@@ -214,7 +213,7 @@ function Uploads (props) {
                         You need to upload media necessary.
                     </Alert> : null}
                 </div>:
-                props.data.Post === "Video" ?
+                props.data.Type === "Video" ?
                 <div style={{width : '100%'}}>
                     <div className='VideoInputContainer'>
                         <div className='UploadContainer'>
@@ -320,7 +319,7 @@ function Uploads (props) {
                         You need to upload media necessary.
                     </Alert> : null}
                 </div>:
-                test === "Podcast" ?
+                props.data.Type === "Podcast" ?
                 <div style={{width : '100%'}}>
                     <div className='PodcastInputContainer'>
                         <div className='UploadContainer'>

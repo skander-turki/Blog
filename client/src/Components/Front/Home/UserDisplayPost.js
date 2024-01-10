@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./UserDisplayPost.css";
 import { useDispatch, useSelector } from "react-redux";
-import { GetMostViewed } from "../../../Redux/actions/posts";
+import { GetAllPost } from "../../../Redux/actions/posts";
 import { useEffect } from "react";
 import DisplayPosts from "./DisplayPosts";
 import CircularProgress from '@mui/material/CircularProgress';
@@ -31,9 +31,9 @@ function UserDisplayPost () {
       }, []);
     /****************************** */
     useEffect(() => {
-        dispatch(GetMostViewed());
+        dispatch(GetAllPost());
     }, [dispatch]);
-    const MostViewed = useSelector((state) => state.postReducer.most_viewed);
+    const MostViewed = useSelector((state) => state.postReducer.AllPost);
 
     return(
         <div className="UserDisplayPost">

@@ -14,28 +14,30 @@
 .Title-Type {
     font-weight: 600;
     font-size:xx-large;
-    color: var(--blue);
+    color: var(--primarycolor);
 }
 .Type-Select {
     border-top: none;
     border-left: none;
     border-right: none;
-    border-bottom: 3px solid var(--blue);
+    border-bottom: 3px solid var(--primarycolor);
     height: 50px;
     font-size: large;
     cursor: pointer;
 }
 .Type-button {
-    background-color: #fff;
-    border: 3px solid var(--blue);
-    color: var(--blue);
+    background-color: var(--secondarycolor);
+    border: none;
+    color: var(--thirdcolor);
     border-radius: 15px;
     font-size: x-large;
     font-weight: 600;
     cursor: pointer;
+    height: 35px;
 }
 .Type-button:hover {
-    background-color: var(--blue);
-    color: #fff;
+    background-color: var(--thirdcolor);
+    color: var(--secondarycolor);
+    border: 3px solid var(--secondarycolor);
     
 }

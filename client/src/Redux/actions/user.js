@@ -12,7 +12,8 @@ import {
           UPLOAD_IMAGE,
           GET_USERS,
           DELETE_USER,
-          ADD_USER
+          ADD_USER,
+          VALIDATE_USER
         } from '../actionTypes/user';
 
 export const currentUser = () => async (dispatch) => {
@@ -63,7 +64,14 @@ export const AddUser = (user ) => async (dispatch) => {
   axios.post('http://localhost:5000/users/AddUser', user).then((result) => { 
     dispatch({ type: ADD_USER, payload: result.data }); 
   }).catch((error) => { 
-  dispatch({ type: ADD_USER, payload: error.response.data.errors });
+  dispatch({ type: ADD_USER, payload: error });
+  })
+};
+export const ValidateUser = (data, id) => (dispatch) => {
+  axios.put(`http://localhost:5000/users/validateUser/${id}`, data).then((result) => { 
+    dispatch({ type: VALIDATE_USER, payload: result.data }); 
+  }).catch((error) => { 
+  dispatch({ type: VALIDATE_USER, payload: error.response.data.errors });
   })
 }
 

@@ -17,7 +17,6 @@ function Details (props) {
     const [data, setData] = useState(
         {
             Titre : "",
-            Category : "",
             Tags : [],
             Description : ""
         }
@@ -27,7 +26,6 @@ function Details (props) {
         {
             setData({
                 Titre :  props.data.Titre,
-                Category : props.data.Category,
                 Tags : props.data.Tags,
                 Description : props.data.Description,
             })
@@ -58,7 +56,7 @@ function Details (props) {
         
     }
     React.useEffect (() => {
-        if(data.Titre !== "" && data.Category !== "" && data.Tags.length !== 0 && data.Description !== "")
+        if(data.Titre !== "" && data.Tags.length !== 0 && data.Description !== "")
         {
             setIsValid(true)
         }
@@ -72,7 +70,6 @@ function Details (props) {
     }
     return (
         <div className='DetailsWrapper'>
-            
                 <div className='inputWrapper'>   
                     <input className='input' type="text" name='Titre' onChange={handleChange} required/>
                     <span className='span'>Title</span>
@@ -106,21 +103,8 @@ function Details (props) {
                                 null
                             }
                 </div>
-                <div className='inputWrapper'>   
-                    <select className='select' onChange={handleChange} name='Category' type="text" required>
-                        <option value="" >Select category</option>
-                        <option value="Economy">Economy</option>
-                        <option value="Technology">Technology</option>
-                        <option value="Entertainement">Entertainement</option>
-                        <option value="Sports">Sports</option>
-                        <option value="Science">Science</option>
-                        <option value="Health">Health</option>
-                        <option value="Politics">Politics</option>
-                    </select>
-                    <span className='Selectspan'>Category</span>
-                </div>
                 <div className='inputWrapper'>
-                    <textarea className='input' name='Description' onChange={handleChange}  type="text" required/>
+                    <textarea  name='Description' onChange={handleChange}  type="text" rows="4" cols="50" required/>
                     <span className='span'>Description</span>
                 </div>
                 <div className='ButtonWrapper'>

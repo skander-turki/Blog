@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { useEffect, useState} from "react";
 import './CreatePost.css'
-import TypePicker from '../../../Components/Back/CreatePost/TypePicker';
-import Details from '../../../Components/Back/CreatePost/Details';
-import Uploads from '../../../Components/Back/CreatePost/Uploads';
-import Content from '../../../Components/Back/CreatePost/Content';
+import TypePicker from '../../../Components/Front/CreatePost/TypePicker';
+import Details from '../../../Components/Front/CreatePost/Details';
+import Uploads from '../../../Components/Front/CreatePost/Uploads';
+
 
 function CreatePost () {
 const [step , setStep] = useState(0);
@@ -61,12 +61,8 @@ const handleUploads = (data) => {
                         <span className='progress-count'>3</span>
                         <span className='progress-label'>Uploads</span>
                     </li>
-                    <li className={ step == 3 ? 'step-wizard-item current-item' : 'step-wizard-item'}>
-                        <span className='progress-count'>4</span>
-                        <span className='progress-label'>Content</span>
-                    </li>
                     <li className='step-wizard-item'>
-                        <span className='progress-count'>5</span>
+                        <span className='progress-count'>4</span>
                         <span className='progress-label'>Success</span>
                     </li>
                 </ul>    
@@ -90,12 +86,7 @@ const handleUploads = (data) => {
                                 sendDataToParent={handleUploads}
                                 data={post}
                                 /> :
-                step ==3 ?  <Content 
-                                handlestep={handlestep} 
-                                handlestepdown={handlestepdown} 
-                                sendDataToParent={handleUploads}
-                                data={post}
-                                /> :
+                
                 null
             }
             </div>

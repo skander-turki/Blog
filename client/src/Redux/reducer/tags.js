@@ -2,6 +2,7 @@ import {ADD_TAG , GET_TAG, GET_TAGS ,DELETE_TAG, GET_TAG_BY_ID} from '../actionT
 
 const initialState = {
     tag: {},
+    tags:[],
     errors: [],
     load: false,
   };
@@ -18,7 +19,7 @@ const initialState = {
         case GET_TAGS: 
         return {
             ...state,
-            tag: payload,
+            tags: payload,
           };
         case DELETE_TAG:
           return {

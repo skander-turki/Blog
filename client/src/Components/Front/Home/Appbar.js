@@ -41,7 +41,7 @@ function Appbar(props) {
                 <img src={props.theme.Logo}/>
                 <ul className="Navigation">
                   <li><a href="#">About Us</a></li>
-                  <li><a href="#">Write</a></li>
+                  <li><a href="/CreatePost">Write</a></li>
                   <button onClick={handleClickLogin}>Get Started</button>
                 </ul>
                 </div>
@@ -49,7 +49,7 @@ function Appbar(props) {
             <div className="UserNavigationBar">
                 <img className="logo" src="https://res.cloudinary.com/turkiskander/image/upload/v1700613104/Internship/Assets/LogoTest_x9oddp.png"/>
                 <ul className="UserNavigation">
-                    <li className="Navigation"><ion-icon name="create-outline"></ion-icon><a href="#">Write</a></li>
+                    <li className="Navigation"><ion-icon name="create-outline"></ion-icon><a href="/CreatePost">Write</a></li>
                     <div className="profile">
                         <img src={props.user.Image} onClick={handleMenuClick}/>
                         {menuVisible && (

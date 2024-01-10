@@ -4,19 +4,17 @@ const jwt = require('jsonwebtoken');
 
 const saltRounds = 10;
 exports.AddUser = async(req, res) => {
-  const {   Mail, HashedPassword, Birthdate } = req.body;
+  const {   Mail, Password } = req.body;
       // test email
-      const findUser = await User.findOne({ Mail });
-      // email should be unique
-      if (findUser) {
+      User.findOne({ Mail }).then ((findUser)  => {
         return res.status(400).send({ errors: [{ msg: 'email should be unique' }] });
-      }
-      else {
+      }).catch (async () => 
+     {
         const newUser = await new User({ ...req.body });
       // hashage password
-        const hashedpassword = await bcrypt.hash(HashedPassword, saltRounds);
-        newUser.HashedPassword = hashedpassword;
-        newUser.IsMailConfirmed = false;
+        const Password = await bcrypt.hash(Password, saltRounds);
+        newUser.Password = Password;
+        newUser.IsValid = true;
         newUser.LastConnexion = Date.now();
         newUser.isGoogleAuth = false;
       // then we save user in DB
@@ -26,13 +24,11 @@ exports.AddUser = async(req, res) => {
           console.log(error)
           res.status(401).send({ status : "401", errors: [{ msg: error }] });
         })
-      }
+      })
 }
 
 exports.Register = async (req, res) => {
-    console.log("7chineh")
-    try {
-      const {   Mail, HashedPassword, Birthdate } = req.body;
+      const {   Mail, Password } = req.body;
       // test email
       const findUser = await User.findOne({ Mail });
       // email should be unique
@@ -42,29 +38,28 @@ exports.Register = async (req, res) => {
       // new user
       const newUser = await new User({ ...req.body });
       // hashage password
-      const hashedpassword = await bcrypt.hash(HashedPassword, saltRounds);
-      newUser.HashedPassword = hashedpassword;
-      newUser.IsMailConfirmed = false;
+     
+      newUser.Password = await bcrypt.hash(Password, saltRounds);
+      newUser.IsValid = false;
       newUser.LastConnexion = Date.now();
       newUser.isAdmin = false;
       newUser.isGoogleAuth = false;
       // then we save user in DB
-      await newUser.save();
-  
-      // CRRE UN TOKEN
-      const Token = jwt.sign(
-        {
-          id: newUser._id
-        },
-        process.env.SECRET_KEY,
-        { expiresIn: '3h' }
-      );
-      // response
-      res.status(200).send({ status : "200", token: Token});
-    } catch (error) {
-      res.status(401).send({ errors: [{ msg: error }] });
-      console.log(error);
-    }
+      newUser.save().then(()  => {
+        const Token = jwt.sign(
+          {
+            id: newUser._id
+          },
+          process.env.SECRET_KEY,
+          { expiresIn: '3h' }
+        );
+        // response
+        res.status(200).send({ status : "200", token: Token});
+      }).catch((error) => {
+        res.status(401).send({ errors: { msg: error } });
+        console.log(error);
+      })
+
   };
 exports.GetUsers = async (req, res) => {
   try {
@@ -102,42 +97,44 @@ exports.UpdateUser = async (req,res) => {
     res.status(400).send({ errors: [{ msg: error }] });
   }
 }
+exports.ValidateUser = async (req,res) => {
+  User.findById(req.params.id).then((result) => {
+    console.log(result)
+    console.log(req.body)
+      result.Preferences = result.Preferences.concat(req.body.map(String));
+     
+      result.IsValid = true;
+      result.save().then(() => {
+        res.status(200).send({msg : 'User updated' , status:"200"})
+      }).catch(() => {
+        res.status(401).send({errors: [{msg : 'couldn t update user', status:"401"}]})
+      })
+  }).catch((err) => {
+    console.log(err)
+    res.status(400).send({errors: {msg : 'User not found'}})
+  })
+}
 
 exports.Login = async(req,res) => {
   
   if (req.body.LoginByGoogle == false)
    {  //Saisie email et password 
-      const {Mail , HashedPassword} = req.body;
+      const {Mail , Password} = req.body;
       //recherche user 
       User.findOne({Mail}).then((findUser) => {
-        if(!findUser) 
-            {
-              res.status(401).send({errors: [{msg : 'User not found', status:"401"}]});
-            }else
-            {
-              bcrypt.compare(HashedPassword, findUser.HashedPassword).then((comparepassword) => 
-              {
-                if(!comparepassword) 
-                {
-                  res.status(402).send({errors: [{status: "402", msg : 'Bad password'}]});
-                }else 
-                {
-                  const token = jwt.sign(
-                    {id: findUser._id},
-                    process.env.SECRET_KEY, 
-                    {expiresIn : '3h'}
-                  );
-                  res.status(200).send(
-                  {
-                    status:"200",
-                    user: findUser,
-                    token
-                  });
-                }
-              })
-            }
-      }).catch((error) => {
-        res.status(400).send({ errors: [{ msg: error }] });
+        bcrypt.compare(Password, findUser.Password).then((comparepassword) => 
+        {
+          if(!comparepassword) 
+          {
+            res.status(401  ).send({status: "401", msg : 'Bad credentials'});
+          }else 
+          {
+            const token = jwt.sign({id: findUser._id},process.env.SECRET_KEY, {expiresIn : '3h'});
+            res.status(200).send({status:"200",user: findUser,token});
+          }
+        })
+      }).catch(() => {
+        res.status(401).send({msg : 'Bad credentials', status:"401"});
       })} 
   else 
   {
@@ -149,12 +146,12 @@ exports.Login = async(req,res) => {
         console.log(newUser)
     
         // hashage password
-        newUser.IsMailConfirmed = false;
+        newUser.IsValid = false;
         newUser.LastConnexion = Date.now();
         newUser.isAdmin = false;
         newUser.isGoogleAuth = true;
         // then we save user in DB
-        newUser.save().then(() => {
+        newUser.save().then((result) => {
             // CRRE UN TOKEN
           const Token = jwt.sign(
             {
@@ -164,7 +161,7 @@ exports.Login = async(req,res) => {
             { expiresIn: '3h' }
           );
           // response
-          res.status(200).send({ status : "200", token: Token});
+          res.status(200).send({ status : "200", user: result, token: Token});
         }).catch((error) => {
           res.status(402).send({ status : "402", msg: error });
         })
@@ -187,3 +184,4 @@ exports.Login = async(req,res) => {
   }
   
 }
+

@@ -7,15 +7,12 @@ import jwtDecode from 'jwt-decode'
 import "./Style.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import {login,register , uploadImage} from '../../../Redux/actions/user';
+import {login,register } from '../../../Redux/actions/user';
 import { GoogleLogin } from '@react-oauth/google';
 import validator from 'validator';
-import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+
 import PhoneInput from 'react-phone-input-2';
-import axios from 'axios';
+
 
 
 
@@ -65,7 +62,7 @@ function LoginForm  (props)  {
     const [userLogin , setUserLogin] = useState({
         LoginByGoogle : false,
         Mail : "",
-        HashedPassword : ""
+        Password : ""
       }); 
     const handleChange = (e) => {
         setUserLogin({ ...userLogin, [e.target.name]: e.target.value });
@@ -80,6 +77,7 @@ function LoginForm  (props)  {
         
         if(LoginResult.status === "200")
         {
+            console.log(LoginResult)
             if(LoginResult.user.isAdmin === true)
             {
                 handleClickLogin(); 
@@ -114,7 +112,7 @@ function LoginForm  (props)  {
         Mail : "",
         PhoneNumber : "",
         Birthdate : "",
-        HashedPassword:"",
+        Password:"",
         Image: ''
       }); 
 
@@ -178,7 +176,7 @@ function LoginForm  (props)  {
             setIsBirthdateValid(true);
         };
         const handlePassword = (e) => {
-          setUser({ ...user, HashedPassword : e.target.value });
+          setUser({ ...user, Password : e.target.value });
           if (e.target.value.length < 8) {
             setIsPasswordValid(false);
             setPasswordError('Password must contain at least 8 character');
@@ -296,7 +294,7 @@ function LoginForm  (props)  {
                 <span className="label">E-mail</span>
               </div>
               <div className="InputWrapper">
-                <input id="password" className="input" type="password" name="HashedPassword"  onChange={handleChange} required />
+                <input id="password" className="input" type="password" name="Password"  onChange={handleChange} required />
                 <span className="label">Password</span>
                 <span onClick={handleClickShowPassword} className="showPassword">{showPassword ? <ion-icon name="eye-off"></ion-icon>: <ion-icon name="eye"></ion-icon>}</span>
               </div>
@@ -336,7 +334,7 @@ function LoginForm  (props)  {
                         )}
                   </div>
                   <div className="InputWrapper">
-                    <input id="password" className="input" type="password" name="HashedPassword"  onChange={handlePassword} onBlur={() => setPasswordTouched(true)} required />
+                    <input id="password" className="input" type="password" name="Password"  onChange={handlePassword} onBlur={() => setPasswordTouched(true)} required />
                     <span className="label">Password</span>
                     <span onClick={handleClickShowPassword} className="showPassword">{showPassword ? <ion-icon name="eye-off"></ion-icon>: <ion-icon name="eye"></ion-icon>}</span>
                     {PasswordTouched && (

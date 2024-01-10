@@ -19,7 +19,7 @@ const userSchema = new mongoose.Schema({
         min: 6,
         max: 255,
         },
-    IsMailConfirmed: {
+    IsValid: {
         type: Boolean,
         required: true,
         },
@@ -31,7 +31,7 @@ const userSchema = new mongoose.Schema({
     Birthdate: {
         type: Date,
         },
-    HashedPassword: {
+    Password: {
         type: String,
         min: 6,
         max: 255,
@@ -51,6 +51,21 @@ const userSchema = new mongoose.Schema({
     isGoogleAuth: {
         type: Boolean,
         required: true,
-    },    
+    },
+    Preferences: [
+       { type: String}
+    ],
+    Views:[
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref : 'Views'
+        }
+    ],
+    Posts : [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Post'
+        }
+    ]   
 });
 module.exports = mongoose.model("User" , userSchema);
